@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='Style/styles.css') }}">
+
+    <title>My Store - Products</title>
+    <script>
+        // Get all "Add to Cart" buttons
+        const addToCartButtons = document.querySelectorAll(".add-to-cart");
+    
+        // Attach event listener to each button
+        addToCartButtons.forEach(button => {
+            button.addEventListener("click", function() {
+                const productId = this.getAttribute("data-product-id");
+                const productName = this.getAttribute("data-product-name");
+                const productPrice = this.getAttribute("data-product-price");
+    
+                // Create a form to submit data to the PHP script
+                const form = document.createElement("form");
+                form.method = "POST";
+                form.action = "add_to_cart.php";
+    
+                // Add hidden input fields for the data
+                const idInput = document.createElement("input");
+                idInput.type = "hidden";
+                idInput.name = "product_id";
+                idInput.value = productId;
+                form.appendChild(idInput);
+    
+                const nameInput = document.createElement("input");
+                nameInput.type = "hidden";
+                nameInput.name = "product_name";
+                nameInput.value = productName;
+                form.appendChild(nameInput);
+    
+                const priceInput = document.createElement("input");
+                priceInput.type = "hidden";
+                priceInput.name = "product_price";
+                priceInput.value = productPrice;
+                form.appendChild(priceInput);
+    
+                // Append the form to the document and submit it
+                document.body.appendChild(form);
+                form.submit();
+            });
+        });
+    </script>
+    
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">My Store</div>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                <li><a href="{{ url_for('virtual') }}">Virtual Try On</a></li>
+                <li><a href="{{ url_for('cart') }}">Cart</a></li>
+            </ul>    
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+                <button type="button">Search</button>
+            </div>
+        </nav>
+    </header>
+    <section class="featured-products">
+        <!-- Product 1 -->
+<div class="product">
+    <img src="{{ url_for('static', filename='resources/1.png') }}" alt="Product 1">
+    <h2>Product 1</h2>
+    <p>Product 1 description.</p>
+    <span class="price">Rs.750</span>
+    <button class="add-to-cart" data-product-id="1" data-product-name="Product 1" data-product-price="750">Add to Cart</button>
+</div>
+
+<!-- Product 2 -->
+<div class="product">
+    <img src="{{ url_for('static', filename='resources/2.png') }}" alt="Product 2">
+    <h2>Product 2</h2>
+    <p>Another great product description.</p>
+    <span class="price">Rs.850</span>
+    <button class="add-to-cart" data-product-id="2" data-product-name="Product 2" data-product-price="850">Add to Cart</button>
+</div>
+
+<!-- Product 3 -->
+<div class="product">
+    <img src="{{ url_for('static', filename='resources/3.png') }}" alt="Product 3">
+    <h2>Product 3</h2>
+    <p>Check out this fantastic product.</p>
+    <span class="price">Rs.650</span>
+    <button class="add-to-cart" data-product-id="3" data-product-name="Product 3" data-product-price="650">Add to Cart</button>
+</div>
+
+<!-- Product 4 -->
+<div class="product">
+    <img src="{{ url_for('static', filename='resources/4.png') }}" alt="Product 4">
+    <h2>Product 4</h2>
+    <p>Experience luxury with this product.</p>
+    <span class="price">Rs.1000</span>
+    <button class="add-to-cart" data-product-id="4" data-product-name="Product 4" data-product-price="1000">Add to Cart</button>
+</div>
+
+<!-- Product 5 -->
+<div class="product">
+    <img src="{{ url_for('static', filename='resources/5.png') }}" alt="Product 5">
+    <h2>Product 5</h2>
+    <p>Upgrade your style with this item.</p>
+    <span class="price">Rs.500</span>
+    <button class="add-to-cart" data-product-id="5" data-product-name="Product 5" data-product-price="500">Add to Cart</button>
+</div>
+
+<!-- Product 6 -->
+<div class="product">
+    <img src="{{ url_for('static', filename='resources/6.png') }}" alt="Product 6">
+    <h2>Product 6</h2>
+    <p>Upgrade your style with this item.</p>
+    <span class="price">Rs.800</span>
+    <button class="add-to-cart" data-product-id="6" data-product-name="Product 6" data-product-price="800">Add to Cart</button>
+</div>
+
+<!-- Product 7 -->
+<div class="product">
+    <img src="{{ url_for('static', filename='resources/7.png') }}" alt="Product 7">
+    <h2>Product 7</h2>
+    <p>Upgrade your style with this item.</p>
+    <span class="price">Rs.999</span>
+    <button class="add-to-cart" data-product-id="7" data-product-name="Product 7" data-product-price="999">Add to Cart</button>
+</div>
+
+<!-- Product 8 -->
+<div class="product">
+    <img src="{{ url_for('static', filename='resources/8.png') }}" alt="Product 8">
+    <h2>Product 8</h2>
+    <p>Upgrade your style with this item.</p>
+    <span class="price">Rs.1150</span>
+    <button class="add-to-cart" data-product-id="8" data-product-name="Product 8" data-product-price="1150">Add to Cart</button>
+</div>
+</section>
+</form>
+</body>
+</html>
